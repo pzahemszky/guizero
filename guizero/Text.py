@@ -38,7 +38,28 @@ class Text(TextWidget):
     def size(self, size):
         self.text_size = size
 
-        
+    @property
+    def wrap(self):
+        return True if self._get_tk_config("wraplength") == 0 else False
+
+    @wrap.setter
+    def wrap(self, value):
+        if value:
+            self._set_tk_config("wraplength", self._get_master_width(self.master))
+        else:
+            self._set_tk_config("wraplength", 0)
+
+    @property
+    def justify(self):
+        return True
+
+    @justify.setter
+    def justify(self, value):
+        if value:
+            self._set_tk_config("justify", "left")
+
+
+
     # METHODS
     # -------------------------------------------
 
@@ -54,6 +75,14 @@ class Text(TextWidget):
         self.tk.config(text=new_text)
         self.description = "[Text] object with text \"" + new_text + "\""
 
+    def _get_master_width(self, master):
+        """
+        Recurse up the master tree to find the first master with a width.
+        """
+        if master.width == 0:
+            return self._get_master_width(master.master)
+        else:
+            return master.width
 
     # DEPRECATED METHODS
     # --------------------------------------------
