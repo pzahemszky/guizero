@@ -9,9 +9,9 @@ def draw():
 
     for i in range(sides.value):
         turtle.forward(length.value)
-        turtle.right(int(360 / sides.value))
+        turtle.right(360 / sides.value)
         turtle2.forward(length.value)
-        turtle2.right(int(360 / sides.value))
+        turtle2.right(360 / sides.value)
 
 Text(a, text="this is a guizero turtle")
 
