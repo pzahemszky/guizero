@@ -16,7 +16,13 @@ class Turtle(Widget, RawTurtle):
 
         description = "[Turtle] object"
 
-        tk = Canvas(master.tk)
+        # Is the master a turtle widget? 
+        # If so use the turtle's canvas not the widget. 
+        if isinstance(master, Turtle):
+            tk = master.tk
+            master = master.master
+        else:
+            tk = Canvas(master.tk)
 
         super(Turtle, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
