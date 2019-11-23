@@ -7,7 +7,6 @@ install:
   - python -m virtualenv guizero-env
   - source guizero-env/bin/activate
   - pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
-  - cd guizero
   - python setup.py develop
 
 script:
