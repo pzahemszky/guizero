@@ -3,16 +3,16 @@ language: python
 matrix:
   - os: linux
     dist: xenial
+    services: xvfb
   - os: osx
     osx_image: xcode11.2
     language: shell       # 'language: python' is an error on Travis CI macOS
 
-services:
-  - xvfb
 
 python: "3.7"
 
 install:
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo ok )& fi
   - python -m pip install virtualenv --upgrade
   - python -m virtualenv guizero-env
   - source guizero-env/bin/activate
