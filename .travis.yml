@@ -1,6 +1,9 @@
 language: python
 
-dist: xenial
+matrix:
+  - os: linux
+    dist: xenial
+  - os: osx
 
 services:
   - xvfb
