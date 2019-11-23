@@ -1,0 +1,16 @@
+language: python
+
+python: "3.8"
+
+install:
+  - python -m pip install virtualenv --upgrade
+  - python -m virtualenv guizero-env
+  - source guizero-env/bin/activate
+  - pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
+  - cd guizero
+  - python setup.py develop
+
+script:
+  - cd tests
+  - pytest -v
+
