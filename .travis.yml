@@ -12,7 +12,8 @@ matrix:
 python: "3.7"
 
 install:
-  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; type python )& fi
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo ok )& fi
+  - type python; whereis python; which python
   - pip install virtualenv --upgrade
   - python -m virtualenv guizero-env
   - source guizero-env/bin/activate
