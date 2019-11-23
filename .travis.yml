@@ -1,5 +1,10 @@
 language: python
 
+dist: xenial
+
+services:
+  - xvfb
+
 python: "3.8"
 
 install:
