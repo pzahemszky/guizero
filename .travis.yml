@@ -33,4 +33,4 @@ after_script:
   - python setup.py develop --uninstall
   - deactivate
   - rm -r guizero-env
-  - pkill Xvfb
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then pkill -SIGTERM Xvfb; fi
