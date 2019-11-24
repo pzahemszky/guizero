@@ -1,8 +1,9 @@
+language: python
+
 jobs:
   include:
     - os: linux
       dist: xenial
-      language: python
       python: "3.7"
       services: xvfb
     - os: osx
@@ -13,6 +14,7 @@ jobs:
 
 install:
   - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo "xvfb started" )& fi
+  # Create and activate an isolated virtual environment
   - pip3 install --upgrade virtualenv
   - python3 -m virtualenv guizero-env
   - source guizero-env/bin/activate
@@ -22,9 +24,12 @@ install:
   - python setup.py develop
 
 script:
+  - cd tests
   - pytest -v tests
+  - cd ..
 
 after_script:
+  # Clean up to test the full lifecycle
   - python setup.py develop --uninstall
   - deactive
   - rm -r guizero-env
