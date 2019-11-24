@@ -22,7 +22,7 @@ install:
   - pip install --upgrade mkdocs wheel twine virtualenv pytest pillow
   # Install `guizero` in "development mode"
   - python setup.py develop
-    - cd tests
+  - cd tests
 
 script:
   - pytest -v
