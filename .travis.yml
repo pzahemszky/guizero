@@ -13,7 +13,7 @@ jobs:
       language: shell
 
 install:
-  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo "xvfb started" )& fi
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac; echo "xvfb started" )& fi
   # Create and activate an isolated virtual environment
   - pip3 install --upgrade virtualenv
   - python3 -m virtualenv guizero-env
