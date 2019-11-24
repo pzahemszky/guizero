@@ -1,5 +1,9 @@
 language: python
 
+os:
+  - linux
+  - osx
+
 jobs:
   include:
     - os: linux
@@ -22,14 +26,14 @@ install:
   - pip install --upgrade mkdocs wheel twine virtualenv pytest pillow
   # Install `guizero` in "development mode"
   - python setup.py develop
+    - cd tests
 
 script:
-  - cd tests
   - pytest -v
-  - cd ..
 
 after_script:
   # Clean up to test the full lifecycle
+  - cd ..
   - python setup.py develop --uninstall
   - deactivate
   - rm -r guizero-env
