@@ -22,9 +22,9 @@ install:
   - python setup.py develop
 
 script:
-  - cd tests
-  - pytest -v
+  - pytest -v tests
 
 after_script:
   - python setup.py develop --uninstall
   - deactive
+  - rm -r guizero-env
