@@ -25,11 +25,11 @@ install:
 
 script:
   - cd tests
-  - pytest -v tests
+  - pytest -v
   - cd ..
 
 after_script:
   # Clean up to test the full lifecycle
   - python setup.py develop --uninstall
-  - deactive
+  - deactivate
   - rm -r guizero-env
